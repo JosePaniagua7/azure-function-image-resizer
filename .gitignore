@@ -1,0 +1,22 @@
+# API keys and secrets
+.env
+
+# Dependency directory
+node_modules
+
+# Ignore built ts files
+dist
+
+# Mac ds store file
+.DS_Store
+
+# /uploads folder
+/uploads
+
+# /postgress folder
+/postgres_data
+
+# /postgress folder
+.idea
+
+.vscode/
