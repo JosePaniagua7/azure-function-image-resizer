@@ -61,6 +61,7 @@
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.26.0",
     "sequelize-typescript": "^2.1.5",
+    "sharp": "^0.32.1",
     "stripe": "^11.10.0",
     "typedi": "^0.10.0"
   }
