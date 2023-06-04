@@ -13,7 +13,14 @@ export default class TaskCreator {
 
     async create(source: TaskCreationPayload) {
         try {
-            const task = await this.repository.create({ ...source, status: 'created' });
+            const task = await this.repository.create({
+                ...source,
+                status: 'created',
+                resourcePath: source.resource[0].path,
+                originalName: source.resource[0].originalname,
+                mimeType: source.resource[0].mimetype,
+                md5: source.resource[0].filename,
+            });
             return task;
         } catch (e) {
             console.warn('Error while calling creat method in repository: ', e);
