@@ -10,7 +10,7 @@ export default class TaskFinder {
         this.repository = Container.get(TOKENS.TASK_REPOSITORY);
     }
 
-    async findById(id: number) {
+    async findById(id: string) {
         const task = await this.repository.findByPk(id);
         if (!task) throw TaskException.taskNotFound(id);
         return task;
