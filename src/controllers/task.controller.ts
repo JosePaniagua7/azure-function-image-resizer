@@ -46,7 +46,7 @@ export default class TaskController implements ApplicationController {
     private async create(req: Request, res: Response): Promise<Response> {
         try {
             console.log(`Starts trying to create task: ${JSON.stringify(req.body)}`);
-            const task = await new TaskCreator().create(req.body);
+            const task = await new TaskCreator().create({ ...req.body, ...req.files });
             console.log(`Ends creating task with response: ${task.toJSON()}`);
             return res.send(task);
         } catch (e: ControlledException | any) {
