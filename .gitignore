@@ -16,7 +16,10 @@ dist
 # /postgress folder
 /postgres_data
 
-# /postgress folder
+# /intellyJ folder
 .idea
 
 .vscode/
+
+# Resized images folder
+/output
