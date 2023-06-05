@@ -18,15 +18,6 @@ export default class PostgresqlTaskRepository extends Model implements TaskRepos
     @Column
     resourcePath!: string;
 
-    @Column
-    originalName!: string;
-
-    @Column
-    mimeType!: string;
-
-    @Column
-    md5!: string;
-
     create(...params: any[]): Promise<this> {
         return this.create(...params);
     }

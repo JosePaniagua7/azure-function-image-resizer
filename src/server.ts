@@ -7,7 +7,7 @@ dotenv.config();
 
 console.log("Starts connecting with db");
 
-connection.sync({ alter: true }).then(() => {
+connection.sync({ force: true }).then(() => {
   console.log("sequelize sync successful");
   app.listen(app.get("port"), () => {
     console.log(
