@@ -1,15 +1,17 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions";
+import { MultiparFile } from "../domain/contracts/MultipartFile";
+import MultipartParserFileUplaoder from "../domain/application/MultipartParserFileUploader";
+import SharpImageResizer from "../domain/application/SharpImageResizer";
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
     context.log('HTTP trigger function processed a request.');
-    const name = (req.query.name || (req.body && req.body.name));
-    const responseMessage = name
-        ? "Hello, " + name + ". This HTTP triggered function executed successfully."
-        : "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.";
+
+    const files: MultiparFile[] = new MultipartParserFileUplaoder().uploadFiles(req);
+    const responseBuffer = await new SharpImageResizer().resize(files[0].data, 800);
+
 
     context.res = {
-        // status: 200, /* Defaults to 200 */
-        body: responseMessage
+        body: responseBuffer
     };
 };
 
