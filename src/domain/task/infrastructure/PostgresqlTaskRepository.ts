@@ -2,8 +2,11 @@ import {
     Column,
     Model,
     Table,
+    HasMany
 } from "sequelize-typescript";
 import { TaskRepository } from "../contracts/TaskRepository";
+
+import PostgresqlImageRepository from "../../image/infrastructure/PostgresqlImageRepository";
 
 @Table({
     paranoid: true,
@@ -17,6 +20,9 @@ export default class PostgresqlTaskRepository extends Model implements TaskRepos
 
     @Column
     resourcePath!: string;
+
+    @HasMany(() => PostgresqlImageRepository)
+    images!: PostgresqlImageRepository[];
 
     create(...params: any[]): Promise<this> {
         return this.create(...params);
