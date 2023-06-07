@@ -3,12 +3,12 @@ import ImageResizerControlledExceptions from "../exceptions/ImageResizerControll
 
 import { ValidationRule } from "../contracts/ValidationRule";
 
-const hasTaskId: ValidationRule = {
+const hasImageId: ValidationRule = {
     fn: (req: HttpRequest) => Boolean(req.params.id),
     error: ImageResizerControlledExceptions.missingTaskId()
 }
 
-const isTaskIdNumber: ValidationRule = {
+const isImageIdNumber: ValidationRule = {
     fn: (req: HttpRequest) => Boolean(Number(req.params.id)),
     error: ImageResizerControlledExceptions.invalidTaskId()
 }
@@ -24,7 +24,7 @@ const isDimensionNumber: ValidationRule = {
 
 
 export const validateRequestParams = (req: HttpRequest): Boolean => {
-    const rules: ValidationRule[] = [hasTaskId, isTaskIdNumber, hasDimensions, isDimensionNumber];
+    const rules: ValidationRule[] = [hasImageId, isImageIdNumber, hasDimensions, isDimensionNumber];
     const rejectedRules = rules.filter((rule: ValidationRule) => !rule.fn(req));
     if (rejectedRules.length) {
         const errorMessages = rejectedRules.map((rule: ValidationRule): string => rule.error.message);
