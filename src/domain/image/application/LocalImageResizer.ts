@@ -10,7 +10,7 @@ export default class LocalImageResizer implements ImageResizerService {
         this.outputDir = './output'
     }
 
-    async resize(path: string, dimension: number, originalName: string): Promise<string> {
+    async resize(imageId: string, path: string, dimension: number, originalName: string): Promise<string> {
         const destinationPath = getDestinationPath(dimension, originalName);
         const operationHash = getHash(JSON.stringify({ path, dimension, originalName }));
         const fileExtension = extractFileExtension(originalName);
