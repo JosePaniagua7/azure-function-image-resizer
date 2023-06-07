@@ -35,10 +35,7 @@ export default class PostgresqlImageRepository extends Model implements ImageRep
     md5!: string;
 
     @Column
-    width!: number;
-
-    @Column
-    height!: number;
+    dimension!: number;
 
     @ForeignKey(() => PostgresqlTaskRepository)
     @Column
