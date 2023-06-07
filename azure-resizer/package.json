@@ -10,7 +10,8 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
-    "parse-multipart": "^1.0.4"
+    "parse-multipart": "^1.0.4",
+    "sharp": "^0.32.1"
   },
   "devDependencies": {
     "@azure/functions": "^3.0.0",
