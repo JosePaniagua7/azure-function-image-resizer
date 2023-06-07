@@ -5,6 +5,7 @@ import TaskException from "../exceptions/TaskException";
 import { TaskCreationPayload } from "../contracts/TaskCreationPayload";
 import { ImageCreationPayload } from "../../image/contracts/ImageCreationPayload";
 import ImageCreator from "../../image/application/ImageCreator";
+import { TASK_STATUS } from "../constants";
 
 export default class TaskCreator {
     repository: TaskRepository;
@@ -16,7 +17,7 @@ export default class TaskCreator {
         try {
             const task = await this.repository.create({
                 ...source,
-                status: 'created',
+                status: TASK_STATUS.CREATED,
                 resourcePath: source.resource[0].path,
             });
             const imagePayload: ImageCreationPayload = {
