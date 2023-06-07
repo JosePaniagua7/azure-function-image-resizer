@@ -1,4 +1,4 @@
-import { UploadedFile } from "src/domain/shared/contracts/UploadedFile";
+import { UploadedFile } from "../../shared/contracts/UploadedFile";
 
 export interface TaskCreationPayload {
     status: string;
