@@ -1,0 +1,5 @@
+export enum IMAGE_STATUS {
+    CREATED = 'CREATED',
+    RESIZING = 'RESIZING',
+    RESIZED = 'RESIZED',
+}
