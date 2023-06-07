@@ -13,4 +13,10 @@ export default class ImageException {
             status: 400,
         };
     };
+    public static couldNotProcessImageResize: Function = (): ControlledException => {
+        return {
+            message: `Image resize could not be processed`,
+            status: 400,
+        };
+    };
 }

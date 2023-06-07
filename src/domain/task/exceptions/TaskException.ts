@@ -14,6 +14,12 @@ export default class TaskException {
             status: 400,
         };
     };
+    public static couldNotProcessTaskUpdate: Function = (id: string): ControlledException => {
+        return {
+            message: `Could not process task ${id} resizing notification`,
+            status: 400,
+        };
+    };
     public static couldNotListTasks: Function = (): ControlledException => {
         return {
             message: `Ups! service could not completed the tasks lists, please, contact system administrator`,
