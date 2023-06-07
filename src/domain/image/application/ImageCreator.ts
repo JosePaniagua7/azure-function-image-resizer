@@ -4,8 +4,8 @@ import { TOKENS } from '../../shared/constants';
 import ImageException from "../exceptions/ImageException";
 import ImageResizerService from "../contracts/ImageResizerService";
 import { ImageCreationPayload } from "../contracts/ImageCreationPayload";
-
-const requiredSizes = [800, 1000];
+import { IMAGE_STATUS } from "../constants";
+import { requiredSizes } from "../../shared/constants";
 
 export default class ImageCreator {
     repository: ImageRepository;
@@ -18,13 +18,12 @@ export default class ImageCreator {
 
     private async createVariations(source: ImageCreationPayload, taskId: string) {
         const creationPromises = requiredSizes.map((size) => this.repository.create({
-            status: 'created',
+            status: IMAGE_STATUS.CREATED,
             originalResourcePath: source.path,
             originalName: source.originalName,
             mimeType: source.mimeType,
             md5: source.md5,
-            width: size,
-            heigth: size,
+            dimension: size,
             taskId,
         }))
         return Promise.all(creationPromises);
@@ -33,14 +32,14 @@ export default class ImageCreator {
     private async requestVariationResize(variations: any): Promise<string[]> {
         return variations.map((variation: any) => this.resizer.resize(
             variation.originalResourcePath,
-            variation.width,
+            variation.dimension,
             variation.originalName
         ));
     }
 
     private async setGeneratingStatusToVariations(variations: any[], status: string) {
         const updatePromises = variations.map((variation) => {
-            variation.status = 'generating';
+            variation.status = IMAGE_STATUS.RESIZING;
             return variation.save();
         });
         return Promise.all(updatePromises);
@@ -66,8 +65,9 @@ export default class ImageCreator {
             const resizingOperations = await this.requestVariationResize(imageVariations);
             console.log('Resize operations created: ', resizingOperations.length);
             // After that, we can update the variations status to generating
-            await this.setGeneratingStatusToVariations(imageVariations, 'generating');
-            console.log('image status updated');
+            const updatedVariations = await this.setGeneratingStatusToVariations(imageVariations, 'generating');
+            // console.log('image status updated');
+            // return updatedVariations;
 
             // Now, let's wait for all the resizing operations to finish
             const resizingOperationsResult = await Promise.allSettled(resizingOperations);
