@@ -3,3 +3,5 @@ export const TOKENS = {
     TASK_REPOSITORY: 'TASK_REPOSITORY',
     IMAGE_RESIZER: 'IMAGE_RESIZER'
 }
+
+export const requiredSizes = [800, 1000];
