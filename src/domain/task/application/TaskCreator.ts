@@ -27,6 +27,7 @@ export default class TaskCreator {
                 md5: source.resource[0].filename
             }
             await new ImageCreator().create(imagePayload, task.id);
+            await task.update({ status: TASK_STATUS.PROCESSING });
             return task;
         } catch (e) {
             console.warn('Error while calling creat method in repository: ', e);
