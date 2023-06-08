@@ -22,7 +22,7 @@ export default class TaskUpdater {
                 .map((image: PostgresqlImageRepository) => image.dimension)
 
             if (missingDimensions.length) {
-                console.log(`The following dimensions ${missingDimensions}  are still processing, won't cause any status change in stask`);
+                console.log(`The following dimensions ${missingDimensions}  are still processing, won't cause any status change in task`);
                 return;
             }
 
