@@ -27,7 +27,7 @@ export default class ImageController implements ApplicationController {
 
             return res.send(updatedImage);
         } catch (e: ControlledException | any) {
-            console.warn(`The following error ${e} occurred while trying to create task ${req.body}`);
+            console.warn(`The following error ${e} occurred while trying to create task`);
             res.status(e.status | 404);
             return res.send({ message: e.message });
         }
