@@ -10,6 +10,7 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "parse-multipart": "^1.0.4",
     "sharp": "^0.32.1"
   },
