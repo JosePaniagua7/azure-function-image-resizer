@@ -59,7 +59,9 @@ export default class ImageCreator {
       );
       console.log("Resize operations created: ", resizingOperations.length);
       // After that, we can update the variations status to generating
-      const updatedVariations = await this.setGeneratingStatusToVariations(imageVariations);
+      const updatedVariations = await this.setGeneratingStatusToVariations(
+        imageVariations
+      );
       console.log("image status updated");
       return updatedVariations;
     } catch (e) {
