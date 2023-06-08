@@ -31,6 +31,7 @@ export default class ImageCreator {
 
     private async requestVariationResize(variations: any): Promise<string[]> {
         return variations.map((variation: any) => this.resizer.resize(
+            variation.id,
             variation.originalResourcePath,
             variation.dimension,
             variation.originalName
@@ -66,16 +67,8 @@ export default class ImageCreator {
             console.log('Resize operations created: ', resizingOperations.length);
             // After that, we can update the variations status to generating
             const updatedVariations = await this.setGeneratingStatusToVariations(imageVariations, 'generating');
-            // console.log('image status updated');
-            // return updatedVariations;
-
-            // Now, let's wait for all the resizing operations to finish
-            const resizingOperationsResult = await Promise.allSettled(resizingOperations);
-            console.log('Resizing operations is done: ', resizingOperationsResult);
-
-            // Let's update image based on the promise status
-            const resizedImageVariations = await this.handleResizingResponse(imageVariations, resizingOperationsResult);
-            return Promise.all(resizedImageVariations);
+            console.log('image status updated');
+            return updatedVariations;
         } catch (e) {
             console.warn('Error while calling create method in repository: ', e);
             throw ImageException.couldNotCreateImage();
