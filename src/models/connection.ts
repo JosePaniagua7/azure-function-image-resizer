@@ -1,8 +1,8 @@
 "use strict";
 import { Sequelize } from "sequelize-typescript";
 
+import Image from "../domain/image/infrastructure/PostgresqlImageRepository";
 import Task from "../domain/task/infrastructure/PostgresqlTaskRepository";
-import Image from '../domain/image/infrastructure/PostgresqlImageRepository';;
 
 const env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "./../../config/config.json")[env];

@@ -1,5 +1,5 @@
 export interface MultiparFile {
-    filename: string;
-    type: string;
-    data: Buffer;
+  filename: string;
+  type: string;
+  data: Buffer;
 }

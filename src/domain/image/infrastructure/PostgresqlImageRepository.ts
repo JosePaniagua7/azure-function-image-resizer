@@ -1,58 +1,61 @@
 import {
-    Column,
-    Model,
-    Table,
-    ForeignKey,
-    BelongsTo
+  BelongsTo,
+  Column,
+  ForeignKey,
+  Model,
+  Table,
 } from "sequelize-typescript";
-import PostgresqlTaskRepository from "../../task/infrastructure/PostgresqlTaskRepository";
 
+import PostgresqlTaskRepository from "../../task/infrastructure/PostgresqlTaskRepository";
 import { ImageRepository } from "../contracts/ImageRepository";
 
 @Table({
-    paranoid: true,
-    timestamps: true,
-    tableName: "Images",
-    modelName: "PostgresqlImagekRepository"
+  paranoid: true,
+  timestamps: true,
+  tableName: "Images",
+  modelName: "PostgresqlImagekRepository",
 })
-export default class PostgresqlImageRepository extends Model implements ImageRepository {
-    @Column
-    status!: string;
+export default class PostgresqlImageRepository
+  extends Model
+  implements ImageRepository
+{
+  @Column
+  status!: string;
 
-    @Column
-    originalResourcePath!: string;
+  @Column
+  originalResourcePath!: string;
 
-    @Column
-    resizedResourcePath!: string;
+  @Column
+  resizedResourcePath!: string;
 
-    @Column
-    originalName!: string;
+  @Column
+  originalName!: string;
 
-    @Column
-    mimeType!: string;
+  @Column
+  mimeType!: string;
 
-    @Column
-    md5!: string;
+  @Column
+  md5!: string;
 
-    @Column
-    dimension!: number;
+  @Column
+  dimension!: number;
 
-    @ForeignKey(() => PostgresqlTaskRepository)
-    @Column
-    taskId!: number;
+  @ForeignKey(() => PostgresqlTaskRepository)
+  @Column
+  taskId!: number;
 
-    @BelongsTo(() => PostgresqlTaskRepository)
-    task!: PostgresqlTaskRepository;
+  @BelongsTo(() => PostgresqlTaskRepository)
+  task!: PostgresqlTaskRepository;
 
-    create(...params: any[]): Promise<this> {
-        return this.create(...params);
-    }
+  create(...params: any[]): Promise<this> {
+    return this.create(...params);
+  }
 
-    findByPk(...params: any[]): Promise<this> {
-        return this.findByPk(...params);
-    }
+  findByPk(...params: any[]): Promise<this> {
+    return this.findByPk(...params);
+  }
 
-    findAll(...params: any[]): Promise<this> {
-        return this.findAll(...params);
-    }
+  findAll(...params: any[]): Promise<this> {
+    return this.findAll(...params);
+  }
 }

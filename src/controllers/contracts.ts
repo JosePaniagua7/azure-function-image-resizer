@@ -1,3 +1,3 @@
 export interface ApplicationController {
-    registerRoutes: Function;
+  registerRoutes: () => void;
 }

@@ -1,8 +1,9 @@
 import { HttpRequest } from "@azure/functions";
-import { ResizedException } from "./ResizerException";
+
 import { MultiparFile } from "./MultipartFile";
+import { ResizedException } from "./ResizerException";
 
 export interface ValidationRule {
-    fn: (req: HttpRequest | MultiparFile[]) => Boolean;
-    error: ResizedException;
+  fn: (req: HttpRequest | MultiparFile[]) => boolean;
+  error: ResizedException;
 }

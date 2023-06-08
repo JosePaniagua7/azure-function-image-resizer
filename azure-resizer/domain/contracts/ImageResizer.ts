@@ -1,3 +1,3 @@
 export interface ImageResizer {
-    resize(source: Buffer | string, dimension: number): Promise<Buffer>
+  resize(source: Buffer | string, dimension: number): Promise<Buffer>;
 }
