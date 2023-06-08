@@ -2,8 +2,9 @@ import { Application, Request, Response } from "express";
 import { ApplicationController } from "./contracts";
 import { ControlledException } from '../domain/shared/exceptions';
 import ImageUpdater from "../domain/image/application/ImageUpdater";
+import TaskUpdater from "../domain/task/application/TaskUpdater";
 
-export default class TaskController implements ApplicationController {
+export default class ImageController implements ApplicationController {
     app: Application;
 
     constructor(app: Application) {
@@ -11,14 +12,18 @@ export default class TaskController implements ApplicationController {
     }
 
     public registerRoutes(): void {
-        this.app.post("/task/:taskId/image/:imageId", this.update);
+        this.app.post("/image/:imageId", this.update);
     }
 
     private async update(req: Request, res: Response): Promise<Response> {
         try {
-            console.log(`Starts updating image: ${req.params.imageId} that belongs to task ${req.params.taskId}`);
-            const updatedImage = new ImageUpdater().resizeOperationReceived({ ...req.body, ...req.files });
+            const updatedImage = await new ImageUpdater().resizeOperationReceived({
+                ...req.body,
+                ...req.files,
+                id: req.params.imageId
+            });
             console.log('Image update received, will notify task updater use case for proper handle');
+            await new TaskUpdater().imageResized(updatedImage.taskId);
 
             return res.send(updatedImage);
         } catch (e: ControlledException | any) {
