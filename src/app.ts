@@ -1,9 +1,9 @@
+import cors from "cors";
 import express from "express";
 import path from "path";
 
 import { loadApiEndpoints } from "./controllers/api";
 import { uploadFiles } from "./middlware/FileUpload.middleware";
-import cors from 'cors';
 
 // Create Express server
 const app = express();
