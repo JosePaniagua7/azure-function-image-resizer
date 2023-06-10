@@ -27,11 +27,7 @@ export default class AzureImageResizer implements ImageResizerService {
         TOKENS.AZURE_CODE
       )}&dimensions=${dimension}`;
 
-      console.log('Executing request to endpoint:  ', endpoint);
-      await this.http.post(endpoint, form).catch(e => {
-        console.log('e is: ', e);
-      });
-      return ""
+      return this.http.post(endpoint, form);
     } catch (e) {
       console.log("e: ", e);
     } finally {

@@ -1,8 +1,8 @@
 import dotenv from "dotenv";
+import { Sequelize } from "sequelize";
 
 import app from "./app";
 import connection from "./models/connection";
-import { Sequelize } from "sequelize";
 
 dotenv.config();
 
@@ -13,11 +13,11 @@ connection().then((conn: Sequelize) => {
     console.log("sequelize sync successful");
     app.listen(app.get("port"), () => {
       console.log(
-        "  App is running at http://localhost:%d in %s mode",
-        app.get("port"),
-        app.get("env")
+        `App is running at http://${process.env.SERVICE_NAME}:${app.get(
+          "port"
+        )} in mode ${app.get("env")}`
       );
       console.log("  Press CTRL-C to stop\n");
     });
   });
-})
+});
