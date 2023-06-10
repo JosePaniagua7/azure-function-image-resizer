@@ -26,6 +26,7 @@ services:
       - PORT=3000
       - AZURE_IMAGE_RESIZER_HOST=resizer-service
       - SERVICE_NAME=api
+      - AZURE_CODE=HjbLPb0S71628Zzj41OEpDhaMctR0H7EupI1Sosq-x_KAzFuk2Hxrw==
     ports:
       - "3000:3000"
   resizer-service:

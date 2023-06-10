@@ -1,10 +1,7 @@
-import dotenv from "dotenv";
 import { Sequelize } from "sequelize";
 
 import app from "./app";
 import connection from "./models/connection";
-
-dotenv.config();
 
 console.log("Starts connecting with db");
 

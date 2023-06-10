@@ -5,7 +5,7 @@ import { extractFileExtension, getHash } from "../../shared/utils";
 import ImageResizerService from "../contracts/ImageResizerService";
 import { getDestinationPath } from "../utils";
 
-export default class LocalImageResizer implements ImageResizerService {
+class LocalImageResizer implements ImageResizerService {
   outputDir: string;
   constructor() {
     this.outputDir = "./output";
@@ -33,3 +33,4 @@ export default class LocalImageResizer implements ImageResizerService {
       .then(() => resourcePath);
   }
 }
+export default new LocalImageResizer();

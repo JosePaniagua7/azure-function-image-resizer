@@ -5,7 +5,7 @@ import Container from "../../../dependency.injection";
 import { TOKENS } from "../../shared/constants";
 import ImageResizerService from "../contracts/ImageResizerService";
 
-export default class AzureImageResizer implements ImageResizerService {
+class AzureImageResizer implements ImageResizerService {
   http: AxiosInstance;
   constructor() {
     this.http = axios.create({
@@ -23,9 +23,7 @@ export default class AzureImageResizer implements ImageResizerService {
       const fileBuffer = await readFile(path);
       const form = new FormData();
       form.append("resource", new Blob([fileBuffer]));
-      const endpoint = `${imageId}?code=${Container.get(
-        TOKENS.AZURE_CODE
-      )}&dimensions=${dimension}`;
+      const endpoint = `${imageId}?code=${process.env.AZURE_CODE}&dimensions=${dimension}`;
 
       return this.http.post(endpoint, form);
     } catch (e) {
@@ -35,3 +33,5 @@ export default class AzureImageResizer implements ImageResizerService {
     }
   }
 }
+
+export default new AzureImageResizer();
