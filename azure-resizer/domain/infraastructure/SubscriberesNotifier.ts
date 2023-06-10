@@ -3,7 +3,7 @@ import axios from "axios";
 export default class SubscribersNotifier {
   subscribers: string[];
   constructor() {
-    this.subscribers = ["http://localhost:3000/image"];
+    this.subscribers = ["http://api:3000/image"];
   }
   async notify(imageId: string, source: Buffer) {
     const form = new FormData();
