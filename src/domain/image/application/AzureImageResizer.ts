@@ -8,12 +8,9 @@ import ImageResizerService from "../contracts/ImageResizerService";
 export default class AzureImageResizer implements ImageResizerService {
   http: AxiosInstance;
   constructor() {
-    // IMPORTANT! THIS VARIABLES SHOULD BE INJECTED BY ENV PROVIDER, DUE SOME
-    // SPEED UP TO DELIVER TECHNICAL CHALLENGE ASAP, THIS WILL BE SKIPED
     this.http = axios.create({
       proxy: false,
-      baseURL: "http://127.0.0.1:7071/api/resize-image/",
-      // baseURL: 'https://jose-paniagua-image-resizer.azurewebsites.net/api/resize-image/',
+      baseURL: `http://${process.env.AZURE_IMAGE_RESIZER_HOST}/api/resize-image/`,
     });
   }
 
@@ -29,7 +26,12 @@ export default class AzureImageResizer implements ImageResizerService {
       const endpoint = `${imageId}?code=${Container.get(
         TOKENS.AZURE_CODE
       )}&dimensions=${dimension}`;
-      return this.http.post(endpoint, form);
+
+      console.log('Executing request to endpoint:  ', endpoint);
+      await this.http.post(endpoint, form).catch(e => {
+        console.log('e is: ', e);
+      });
+      return ""
     } catch (e) {
       console.log("e: ", e);
     } finally {
