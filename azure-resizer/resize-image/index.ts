@@ -21,7 +21,7 @@ const httpTrigger: AzureFunction = async function (
     validateFiles(files);
     const responseBuffer = await new SharpImageResizer().resize(
       files[0].data,
-      800
+      Number(req.query.dimensions)
     );
     await new SubscribersNotifier().notify(req.params.id, responseBuffer);
 
