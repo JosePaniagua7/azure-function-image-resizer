@@ -15,10 +15,20 @@ services:
       timeout: 5s
       retries: 5
   api:
-    container_name: 'image-resizer-api'
     build: .
+    volumes:
+      - './output:/api/output'
     depends_on:
       db:
         condition: service_healthy 
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - AZURE_IMAGE_RESIZER_HOST=resizer-service
+      - SERVICE_NAME=api
     ports:
       - "3000:3000"
+  resizer-service:
+    build: ./azure-resizer
+    ports:
+      - "8080:80"

@@ -1,8 +1,9 @@
 FROM node:lts-alpine
 
-WORKDIR /image-resizer
+WORKDIR /api
 
-COPY package*.json ./
+COPY package.json ./
+COPY package-lock.json ./
 
 RUN npm install
 
