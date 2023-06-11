@@ -1,6 +1,8 @@
 import PostgresqlImageRepository from "../../image/infrastructure/PostgresqlImageRepository";
 import { TaskRepository } from "../contracts/TaskRepository";
 import { TASK_STATUS } from "../constants";
+import { TestImageRepository, imagesSources } from "../../image/infrastructure/TestImageRepository";
+
 
 export const tasksSources = [
     {
@@ -58,6 +60,10 @@ class TestTaskRepository implements TaskRepository {
 
     findAll(...params: any[]): TestTaskRepository[] {
         return tasksSources.map((e) => new TestTaskRepository(e));
+    }
+
+    $get(entity: string): TestImageRepository[] {
+        return imagesSources.map((e) => new TestImageRepository(e));
     }
 }
 

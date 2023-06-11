@@ -5,7 +5,6 @@ describe("Test task creator use case", () => {
     it("find by id should return a new instance of task repository", async () => {
         const creator = new TaskCraetor();
         const createSpy = jest.spyOn(creator.repository as any, 'create');
-        const updateSpy = jest.spyOn(creator.repository as any, 'update');
         const expectedProperties = tasksSources[0];
 
         const returnedTask = await creator.create({
@@ -23,7 +22,6 @@ describe("Test task creator use case", () => {
             }],
         });
 
-        console.log('returned task  ', returnedTask);
         expect(createSpy).toBeCalled();
     });
 });

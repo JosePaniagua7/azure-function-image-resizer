@@ -9,12 +9,14 @@ import TaskFinder from "./TaskFinder";
 
 export default class TaskUpdater {
   repository: TaskRepository;
+  finder: TaskFinder;
   constructor() {
     this.repository = Container.get(TOKENS.TASK_REPOSITORY);
+    this.finder = new TaskFinder();
   }
 
   async imageResized(id: string) {
-    const task = await new TaskFinder().findById(id);
+    const task = await this.finder.findById(id);
     try {
       const taskImages = await task.$get("images");
       const missingDimensions = taskImages

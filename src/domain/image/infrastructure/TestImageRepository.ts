@@ -6,7 +6,7 @@ export const imagesSources = [
     {
         id: '1',
         status: IMAGE_STATUS.RESIZED,
-        originalResourcePath: "/uploads/originalResource.jpeg",
+        originalResourcePath: './test/resources/technicalInterviewInput.jpeg',
         resizedResourcePath: "/output/techincalInterview/800/md5Generated.jpg",
         originalName: "techincalInterview",
         mimeType: "jpg",
@@ -17,7 +17,7 @@ export const imagesSources = [
     {
         id: '2',
         status: IMAGE_STATUS.RESIZED,
-        originalResourcePath: "/uploads/originalResource.jpeg",
+        originalResourcePath: './test/resources/technicalInterviewInput.jpeg',
         resizedResourcePath: "/output/techincalInterview/1000/md5Generated.jpg",
         originalName: "techincalInterview",
         mimeType: "jpg",
@@ -27,7 +27,7 @@ export const imagesSources = [
     }
 ]
 
-class TestImageRepository implements ImageRepository {
+export class TestImageRepository implements ImageRepository {
     id: string;
     status: string;
     originalResourcePath: string;
