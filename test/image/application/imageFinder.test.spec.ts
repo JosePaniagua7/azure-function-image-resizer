@@ -1,10 +1,10 @@
 import ImageFinder from '../../../src/domain/image/application/ImageFinder';
-import { tasksSources } from '../../../src/domain/image/infrastructure/TestImageRepository';
+import { imagesSources } from '../../../src/domain/image/infrastructure/TestImageRepository';
 
 describe("Test image finder use case", () => {
     it("find by id should return a new instance of image repository", async () => {
         const finder = new ImageFinder();
-        const expectedProperties = tasksSources[0];
+        const expectedProperties = imagesSources[0];
 
         const obtainedImage = await finder.findById('1');
 

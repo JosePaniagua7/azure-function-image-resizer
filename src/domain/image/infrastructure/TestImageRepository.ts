@@ -2,7 +2,7 @@ import PostgresqlImageRepository from "../../image/infrastructure/PostgresqlImag
 import { ImageRepository } from "../contracts/ImageRepository";
 import { IMAGE_STATUS } from "../constants";
 
-export const tasksSources = [
+export const imagesSources = [
     {
         id: '1',
         status: IMAGE_STATUS.RESIZED,
@@ -62,14 +62,14 @@ class TestImageRepository implements ImageRepository {
     })
 
     findByPk = jest.fn((pk: string): TestImageRepository | undefined => {
-        const task = tasksSources.find((e) => e.id == pk);
+        const task = imagesSources.find((e) => e.id == pk);
         if (!task)
             return undefined;
         return new TestImageRepository(task);
     })
 
     findAll = jest.fn((...params: any[]): TestImageRepository[] => {
-        return tasksSources.map((e) => new TestImageRepository(e));
+        return imagesSources.map((e) => new TestImageRepository(e));
     })
 }
 
