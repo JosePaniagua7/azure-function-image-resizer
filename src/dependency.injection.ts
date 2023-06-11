@@ -5,6 +5,7 @@ import { Container } from "typedi";
 import AzureImageResizer from "./domain/image/application/AzureImageResizer";
 import LocalImageResizer from "./domain/image/application/LocalImageResizer";
 import PostgresqlImageRepository from "./domain/image/infrastructure/PostgresqlImageRepository";
+import TestImageRepository from "./domain/image/infrastructure/TestImageRepository";
 import { TOKENS } from "./domain/shared/constants";
 import PostgresqlTaskRepository from "./domain/task/infrastructure/PostgresqlTaskRepository";
 
@@ -24,7 +25,7 @@ const services: Dependency[] = [
   {
     id: TOKENS.IMAGE_REPOSITORY,
     development: PostgresqlImageRepository,
-    test: PostgresqlImageRepository
+    test: TestImageRepository
   },
   {
     id: TOKENS.IMAGE_RESIZER,
