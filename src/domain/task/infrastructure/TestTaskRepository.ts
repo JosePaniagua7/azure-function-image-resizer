@@ -41,8 +41,8 @@ class TestTaskRepository implements TaskRepository {
         this.resourcePath = source.resourcePath;
     }
 
-    create(status: string, resourcePath: string): TestTaskRepository {
-        return new TestTaskRepository({ status, resourcePath });
+    create(source: any): TestTaskRepository {
+        return new TestTaskRepository(source);
     }
 
     update(source: any): TestTaskRepository {
