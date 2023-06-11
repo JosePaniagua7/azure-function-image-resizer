@@ -2,7 +2,7 @@ import PostgresqlImageRepository from "../../image/infrastructure/PostgresqlImag
 import { TaskRepository } from "../contracts/TaskRepository";
 import { TASK_STATUS } from "../constants";
 
-const tasksSources = [
+export const tasksSources = [
     {
         id: 1,
         createdAt: new Date,

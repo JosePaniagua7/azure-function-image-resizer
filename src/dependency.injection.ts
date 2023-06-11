@@ -8,6 +8,7 @@ import PostgresqlImageRepository from "./domain/image/infrastructure/PostgresqlI
 import TestImageRepository from "./domain/image/infrastructure/TestImageRepository";
 import { TOKENS } from "./domain/shared/constants";
 import PostgresqlTaskRepository from "./domain/task/infrastructure/PostgresqlTaskRepository";
+import TestTaskRepository from "./domain/task/infrastructure/TestTaskRepository";
 
 const env = process.env.NODE_ENV || 'development';
 
@@ -20,7 +21,7 @@ const services: Dependency[] = [
   {
     id: TOKENS.TASK_REPOSITORY,
     development: PostgresqlTaskRepository,
-    test: PostgresqlTaskRepository
+    test: TestTaskRepository
   },
   {
     id: TOKENS.IMAGE_REPOSITORY,
