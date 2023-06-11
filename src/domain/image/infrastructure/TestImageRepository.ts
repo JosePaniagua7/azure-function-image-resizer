@@ -49,12 +49,12 @@ class TestImageRepository implements ImageRepository {
         this.dimension = source.dimension;
         this.taskId = source.taskId;
     }
-    save(status: string, resourcePath: string): TestImageRepository {
-        return new TestImageRepository({ status, resourcePath });
+    save(): TestImageRepository {
+        return this;
     };
 
-    create(status: string, resourcePath: string): TestImageRepository {
-        return new TestImageRepository({ status, resourcePath });
+    create(source: any): TestImageRepository {
+        return new TestImageRepository(source);
     }
 
     update(source: any): TestImageRepository {
