@@ -41,24 +41,24 @@ class TestTaskRepository implements TaskRepository {
         this.resourcePath = source.resourcePath;
     }
 
-    create = jest.fn((status: string, resourcePath: string): TestTaskRepository => {
+    create(status: string, resourcePath: string): TestTaskRepository {
         return new TestTaskRepository({ status, resourcePath });
-    })
+    }
 
-    update = jest.fn((source: any): TestTaskRepository => {
+    update(source: any): TestTaskRepository {
         return new TestTaskRepository(source);
-    })
+    }
 
-    findByPk = jest.fn((pk: number): TestTaskRepository | undefined => {
+    findByPk(pk: number): TestTaskRepository | undefined {
         const task = tasksSources.find((e) => e.id == pk);
         if (!task)
             return undefined;
         return new TestTaskRepository(task);
-    })
+    }
 
-    findAll = jest.fn((...params: any[]): TestTaskRepository[] => {
+    findAll(...params: any[]): TestTaskRepository[] {
         return tasksSources.map((e) => new TestTaskRepository(e));
-    })
+    }
 }
 
 export default new TestTaskRepository({});

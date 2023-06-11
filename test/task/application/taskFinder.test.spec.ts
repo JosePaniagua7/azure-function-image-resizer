@@ -11,7 +11,6 @@ describe("Test image finder use case", () => {
         expect(returnedTask.id).toBe(expectedProperties.id);
         expect(returnedTask.status).toBe(expectedProperties.status);
         expect(returnedTask.resourcePath).toBe(expectedProperties.resourcePath);
-        expect(finder.repository.findByPk).toBeCalled()
     });
 
 
@@ -21,6 +20,5 @@ describe("Test image finder use case", () => {
         const tasks = await finder.list();
 
         expect(tasks.length).toBe(tasksSources.length);
-        expect(finder.repository.findAll).toBeCalled()
     });
 });

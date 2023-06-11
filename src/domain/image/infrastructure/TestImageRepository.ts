@@ -49,28 +49,28 @@ class TestImageRepository implements ImageRepository {
         this.dimension = source.dimension;
         this.taskId = source.taskId;
     }
-    save = jest.fn((status: string, resourcePath: string): TestImageRepository => {
+    save(status: string, resourcePath: string): TestImageRepository {
         return new TestImageRepository({ status, resourcePath });
-    });
+    };
 
-    create = jest.fn((status: string, resourcePath: string): TestImageRepository => {
+    create(status: string, resourcePath: string): TestImageRepository {
         return new TestImageRepository({ status, resourcePath });
-    })
+    }
 
-    update = jest.fn((source: any): TestImageRepository => {
+    update(source: any): TestImageRepository {
         return new TestImageRepository(source);
-    })
+    }
 
-    findByPk = jest.fn((pk: string): TestImageRepository | undefined => {
+    findByPk(pk: string): TestImageRepository | undefined {
         const task = imagesSources.find((e) => e.id == pk);
         if (!task)
             return undefined;
         return new TestImageRepository(task);
-    })
+    }
 
-    findAll = jest.fn((...params: any[]): TestImageRepository[] => {
+    findAll(...params: any[]): TestImageRepository[] {
         return imagesSources.map((e) => new TestImageRepository(e));
-    })
+    }
 }
 
 export default new TestImageRepository({});
