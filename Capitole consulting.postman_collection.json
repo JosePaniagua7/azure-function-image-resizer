@@ -1,0 +1,246 @@
+{
+	"info": {
+		"_postman_id": "819bf555-0b30-4d54-8d14-eaea6417627b",
+		"name": "Capitole consulting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5967395"
+	},
+	"item": [
+		{
+			"name": "List Tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/task",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get task detail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/task/1",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"task",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "resource",
+							"type": "file",
+							"src": "/Users/josepaniagua/Downloads/technicalInterviewInput.jpeg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api}}/task",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"task"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Azure function local",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "taskId",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "resource",
+							"type": "file",
+							"src": "/Users/josepaniagua/Downloads/technicalInterviewInput.jpeg"
+						},
+						{
+							"key": "resource2",
+							"type": "file",
+							"src": "/Users/josepaniagua/Downloads/technicalInterviewInput.jpeg",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:7071/api/resize-image/1?dimensions=800",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"resize-image",
+						"1"
+					],
+					"query": [
+						{
+							"key": "dimensions",
+							"value": "800"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Azure function cloud",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "taskId",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "resource",
+							"type": "file",
+							"src": "/Users/josepaniagua/Downloads/technicalInterviewInput.jpeg"
+						},
+						{
+							"key": "resource2",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://jose-paniagua-image-resizer.azurewebsites.net/api/resize-image/1?code=HjbLPb0S71628Zzj41OEpDhaMctR0H7EupI1Sosq-x_KAzFuk2Hxrw==&dimensions=800",
+					"protocol": "https",
+					"host": [
+						"jose-paniagua-image-resizer",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"resize-image",
+						"1"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "HjbLPb0S71628Zzj41OEpDhaMctR0H7EupI1Sosq-x_KAzFuk2Hxrw=="
+						},
+						{
+							"key": "dimensions",
+							"value": "800"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "dimension",
+							"value": "800",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "resizedImage",
+							"type": "file",
+							"src": "/Users/josepaniagua/Downloads/technicalInterviewInput.jpeg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api}}/image/2",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"image",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
