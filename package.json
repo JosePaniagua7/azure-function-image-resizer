@@ -4,7 +4,7 @@
   "description": "Capitole Consulting Technical Test",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest --verbose --coverage",
     "dev": "ts-node-dev ./src/server.ts",
     "migrate": "npx sequelize-cli db:migrate",
     "migrate-undo": "npx sequelize-cli db:migrate:undo",
