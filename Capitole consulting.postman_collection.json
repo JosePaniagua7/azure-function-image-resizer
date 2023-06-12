@@ -97,21 +97,18 @@
 						{
 							"key": "resource2",
 							"type": "file",
-							"src": "/Users/josepaniagua/Downloads/technicalInterviewInput.jpeg",
+							"src": [],
 							"disabled": true
 						}
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:7071/api/resize-image/1?dimensions=800",
+					"raw": "http://localhost:8080/api/resize-image/1?dimensions=800",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"localhost"
 					],
-					"port": "7071",
+					"port": "8080",
 					"path": [
 						"api",
 						"resize-image",
