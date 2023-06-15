@@ -7,20 +7,37 @@
 
 ## How to run the project
 
-To run the project you must siply run the command `docker-compose up` and your service will be available through `http://localhost:3000`
+To run the project you must simply run the command `docker-compose up` and your service will be available through `http://localhost:3000`
 
 ### What is happening behing the scenes?
 
 When you run `docker-compose up`, 3 containers will be created:
 * db: a database container that is based on postgresql dockerhub image, this will allow us to maintain data and make it persistance in our storage
 * api: Our node-express backend service, the one in charge of receiving tasks requests, store them in db and orchestrate the resizing operations. 
-* resizer-service: This will emulate an azure function environment, this will allow the developer to make any changes in local without cost attached to it.
+* resizer-service: This will emulate an azure function environment and allow the developer to make any changes in local without cost attached to it.
 
 ### Play around with the project
 
 There is a postman collection attached to this repo called `Image resizer.postman_collection.json` so, you just have to import this in your postman agent and will be ready to go. 
 
 As a recommnedation, if you want to test end to end scenario, I'd use the request called "Create task" since it covers the entire long running operation for images resize. Either way, api is prepared to handle not-possible operations like trying to update an image that does not exists.
+
+### Running the function in the cloud. 
+
+To achieve this, you must deploy an azure function in your own azure active directory and then execute the following request
+
+`curl -X POST https://{YOUR_AZURE_FUNCTION}/api/resize-image/{IMAGE_IG}?code={YOUR_AZURE_PROVIDED_CODE}&dimension={YOUR_REQUESTED_DIMENSION}
+   -H "Content-Type: application/x-www-form-urlencoded" 
+   -d "resource={PATH_TO_FILE}"`
+
+
+So, replacing some generic values for this particular project, it will end in a call like the following: 
+
+`curl -X POST https://jose-paniagua-image-resizer.azurewebsites.net/api/resize-image/1?code={AZURE_CODE}&dimension=800
+   -H "Content-Type: application/x-www-form-urlencoded" 
+   -d "resource=./test/resources/input.jpeg"`
+
+Nevertheless, I still recommend to use the postman collection attached, particularly, the request called `Azure function cloud` to see this working.
 
 ### Running tests
 
@@ -44,6 +61,9 @@ This project was build with a domain driven development approach, with the follo
     * Finder
     * Updater
 
+### Asynchronous behavior
+
+What is most interesing about this project is the Asynchronous approach, since task creation request is not hanged untill resizing operations are done, but it only creates a reisizing request to the Azure function and then is the Azure function the one in charge of notifying the configured subscribers about the resizing result. Under this scenario, the api expose a method where the resizing operation result is received and handled properly (stored in the local container and path saved to db).
 
 ## Dependency injection
 
