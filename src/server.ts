@@ -6,7 +6,7 @@ import connection from "./models/connection";
 console.log("Starts connecting with db");
 
 connection().then((conn: Sequelize) => {
-  conn.sync({ force: true }).then(() => {
+  conn.sync({ alter: true }).then(() => {
     console.log("sequelize sync successful");
     app.listen(app.get("port"), () => {
       console.log(
