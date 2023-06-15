@@ -17,7 +17,7 @@ describe("Test task creator use case", () => {
                 fieldname: 'resource',
                 encoding: 'md5',
                 destination: 'output',
-                path: './test/resources/technicalInterviewInput.jpeg',
+                path: './test/resources/input.jpeg',
                 size: 20,
             }],
         });

@@ -52,7 +52,7 @@
 						{
 							"key": "resource",
 							"type": "file",
-							"src": "/Users/josepaniagua/Downloads/technicalInterviewInput.jpeg"
+							"src": "/Users/josepaniagua/Downloads/input.jpeg"
 						}
 					]
 				},
@@ -92,7 +92,7 @@
 						{
 							"key": "resource",
 							"type": "file",
-							"src": "/Users/josepaniagua/Downloads/technicalInterviewInput.jpeg"
+							"src": "/Users/josepaniagua/Downloads/input.jpeg"
 						},
 						{
 							"key": "resource2",
@@ -141,7 +141,7 @@
 						{
 							"key": "resource",
 							"type": "file",
-							"src": "/Users/josepaniagua/Downloads/technicalInterviewInput.jpeg"
+							"src": "/Users/josepaniagua/Downloads/input.jpeg"
 						},
 						{
 							"key": "resource2",
@@ -195,7 +195,7 @@
 						{
 							"key": "resizedImage",
 							"type": "file",
-							"src": "/Users/josepaniagua/Downloads/technicalInterviewInput.jpeg"
+							"src": "/Users/josepaniagua/Downloads/input.jpeg"
 						}
 					]
 				},

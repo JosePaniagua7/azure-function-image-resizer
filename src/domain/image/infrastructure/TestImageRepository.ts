@@ -6,9 +6,9 @@ export const imagesSources = [
     {
         id: '1',
         status: IMAGE_STATUS.RESIZED,
-        originalResourcePath: './test/resources/technicalInterviewInput.jpeg',
+        originalResourcePath: './test/resources/input.jpeg',
         resizedResourcePath: "/output/technicalInterviewInput/800/md5Generated.jpeg",
-        originalName: './test/resources/technicalInterviewInput.jpeg',
+        originalName: './test/resources/input.jpeg',
         mimeType: "jpg",
         md5: "md5Generated",
         dimension: 800,
@@ -17,9 +17,9 @@ export const imagesSources = [
     {
         id: '2',
         status: IMAGE_STATUS.RESIZED,
-        originalResourcePath: './test/resources/technicalInterviewInput.jpeg',
+        originalResourcePath: './test/resources/input.jpeg',
         resizedResourcePath: "/output/technicalInterviewInput/1000/md5Generated.jpeg",
-        originalName: './test/resources/technicalInterviewInput.jpeg',
+        originalName: './test/resources/input.jpeg',
         mimeType: "jpeg",
         md5: "md5Generated",
         dimension: 1000,
