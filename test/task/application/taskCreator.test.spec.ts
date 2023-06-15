@@ -13,7 +13,7 @@ describe("Test task creator use case", () => {
             resource: [{
                 originalname: 'test',
                 mimetype: 'jpg',
-                filename: 'technicalInterview',
+                filename: 'input',
                 fieldname: 'resource',
                 encoding: 'md5',
                 destination: 'output',

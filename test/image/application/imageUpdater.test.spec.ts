@@ -13,7 +13,7 @@ describe("Test image updater use case", () => {
             resizedImage: [{
                 originalname: 'test',
                 mimetype: 'jpg',
-                filename: 'technicalInterview',
+                filename: 'input',
                 fieldname: 'resource',
                 encoding: 'md5',
                 destination: 'output',
