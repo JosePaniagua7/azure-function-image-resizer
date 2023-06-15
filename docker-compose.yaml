@@ -7,6 +7,7 @@ services:
       - './postgres_data:/var/lib/postgresql/data'
     environment:
       - POSTGRES_PASSWORD=secure_pass_here
+      - POSTGRES_DB=dev
     ports:
       - '5432:5432'
     healthcheck:
