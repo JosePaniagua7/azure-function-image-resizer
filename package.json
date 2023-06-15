@@ -1,7 +1,7 @@
 {
-  "name": "capitole-consulting-technical-test",
+  "name": "azure-function-image-resizer",
   "version": "1.0.0",
-  "description": "Capitole Consulting Technical Test",
+  "description": "Azure function image resizer",
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose --coverage",
@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:JosePaniagua7/capitole-technical-interview.git"
+    "url": "https://github.com/JosePaniagua7/azure-function-image-resizer"
   },
   "author": "Jose Paniagua",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JosePaniagua7/capitole-technical-interview/issues"
+    "url": "https://github.com/JosePaniagua7/azure-function-image-resizer/issues"
   },
-  "homepage": "https://github.com/JosePaniagua7/capitole-technical-interview",
+  "homepage": "https://github.com/JosePaniagua7/azure-function-image-resizer",
   "devDependencies": {
     "@jest/globals": "^29.5.0",
     "@types/cors": "^2.8.13",

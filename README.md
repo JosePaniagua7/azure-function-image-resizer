@@ -1,4 +1,4 @@
-# Capitole Consulting ~ Technical test
+# Azure function image resizer
 
 ## Requirements
 * Docker
@@ -18,7 +18,7 @@ When you run `docker-compose up`, 3 containers will be created:
 
 ### Play around with the project
 
-There is a postman collection attached to this repo called `Capitole consulting.postman_collection.json` so, you just have to import this in your postman agent and will be ready to go. 
+There is a postman collection attached to this repo called `Image resizer.postman_collection.json` so, you just have to import this in your postman agent and will be ready to go. 
 
 As a recommnedation, if you want to test end to end scenario, I'd use the request called "Create task" since it covers the entire long running operation for images resize. Either way, api is prepared to handle not-possible operations like trying to update an image that does not exists.
 
