@@ -1,0 +1,11 @@
+name: First Workflow
+
+on: [push]
+
+jobs: 
+    build: 
+        runs-on: ubuntu-latest
+        setps:
+            - uses: actions/checkout@v1
+            - name: Hello World
+            run: echo "Hello World" from ${{github.workflow}} triggered by the ${{github.event_name}} done by ${{github.actor}}
